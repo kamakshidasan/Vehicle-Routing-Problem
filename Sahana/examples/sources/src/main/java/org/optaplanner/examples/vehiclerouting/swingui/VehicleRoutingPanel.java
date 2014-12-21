@@ -37,18 +37,11 @@ public class VehicleRoutingPanel extends SolutionPanel {
 
     public static final String LOGO_PATH = "/org/optaplanner/examples/vehiclerouting/swingui/vehicleRoutingLogo.png";
 
-    private VehicleRoutingWorldPanel vehicleRoutingWorldPanel;
-
     private Random demandRandom = new Random(37);
     private Long nextLocationId = null;
 
     public VehicleRoutingPanel() {
         setLayout(new BorderLayout());
-        JTabbedPane tabbedPane = new JTabbedPane();
-        vehicleRoutingWorldPanel = new VehicleRoutingWorldPanel(this);
-        vehicleRoutingWorldPanel.setPreferredSize(PREFERRED_SCROLLABLE_VIEWPORT_SIZE);
-        tabbedPane.add("World", vehicleRoutingWorldPanel);
-        add(tabbedPane, BorderLayout.CENTER);
     }
 
     @Override
@@ -67,7 +60,6 @@ public class VehicleRoutingPanel extends SolutionPanel {
 
     public void resetPanel(Solution solution) {
         VehicleRoutingSolution schedule = (VehicleRoutingSolution) solution;
-        vehicleRoutingWorldPanel.resetPanel(schedule);
         resetNextLocationId();
     }
 
@@ -84,7 +76,6 @@ public class VehicleRoutingPanel extends SolutionPanel {
     @Override
     public void updatePanel(Solution solution) {
         VehicleRoutingSolution schedule = (VehicleRoutingSolution) solution;
-        vehicleRoutingWorldPanel.updatePanel(schedule);
     }
 
     public void doMove(Move move) {
