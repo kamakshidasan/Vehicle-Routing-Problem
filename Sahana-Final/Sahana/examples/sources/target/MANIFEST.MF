@@ -3,7 +3,7 @@ Implementation-Title: OptaPlanner examples
 Implementation-Version: 6.1.0.Final
 Build-Timestamp: ${build.datetime}
 Java-Version: 1.8.0_25
-Built-By: Adhitya
+Built-By: Aishwarya
 Scm-Connection: scm:git:git@github.com:droolsjbpm/optaplanner.git/opta
  planner-examples
 Os-Arch: x86
@@ -36,7 +36,7 @@ Scm-Url: https://github.com/droolsjbpm/optaplanner/optaplanner-example
 Os-Version: 6.1
 Scm-Revision: ${buildNumber}
 Created-By: IntelliJ IDEA
-Build-Jdk: 1.7.0_71
+Build-Jdk: 1.8.0_25
 Specification-Version: 6.1.0.Final
 Implementation-URL: http://www.optaplanner.org/optaplanner-examples
 

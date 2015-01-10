@@ -20,8 +20,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamInclude;
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 
-@XStreamAlias("VrpDepot")
-
+@XStreamAlias("depot")
 public class Depot extends AbstractPersistable {
 
     protected Location location;

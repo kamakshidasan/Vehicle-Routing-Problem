@@ -19,40 +19,21 @@ package org.optaplanner.examples.vehiclerouting.domain;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 
-@XStreamAlias("VrpLocation")
+@XStreamAlias("location")
 public class Location extends AbstractPersistable {
 
     private String name = null;
     private double latitude;
     private double longitude;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getLatitude() {
         return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
     }
 
     public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    // ************************************************************************
-    // Complex methods
-    // ************************************************************************
 
     /**
      * The distance is not in miles or km, but in the TSPLIB's unit of measurement.
@@ -75,13 +56,6 @@ public class Location extends AbstractPersistable {
             return id.toString();
         }
         return id.toString() + "-" + name;
-    }
-
-    public String getSafeName() {
-        if (name == null) {
-            return id.toString();
-        }
-        return name;
     }
 
 }

@@ -19,25 +19,22 @@ package org.optaplanner.examples.vehiclerouting.domain;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 
-@XStreamAlias("VrpVehicle")
+@XStreamAlias("vehicle")
 public class Vehicle extends AbstractPersistable implements Standstill {
 
-    protected int capacity;
     protected Depot depot;
+    protected Item item;
+    protected double weightCapacity;
+    protected double volumeCapacity;
 
-    // Shadow variables
     protected Customer nextCustomer;
 
-    public int getCapacity() {
-        return capacity;
+    public double getWeightCapacity() {
+        return weightCapacity;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public void setDepot(Depot depot) {
-        this.depot = depot;
+    public double getVolumeCapacity() {
+        return volumeCapacity;
     }
 
     public Customer getNextCustomer() {
@@ -47,10 +44,6 @@ public class Vehicle extends AbstractPersistable implements Standstill {
     public void setNextCustomer(Customer nextCustomer) {
         this.nextCustomer = nextCustomer;
     }
-
-    // ************************************************************************
-    // Complex methods
-    // ************************************************************************
 
     public Vehicle getVehicle() {
         return this;
@@ -62,7 +55,7 @@ public class Vehicle extends AbstractPersistable implements Standstill {
 
     @Override
     public String toString() {
-        return getLocation() + "[vehicle-" + id + "]";
+        return id.toString();
     }
 
 }

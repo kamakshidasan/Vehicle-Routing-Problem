@@ -25,10 +25,6 @@ public class VehicleRoutingPanel extends SolutionPanel {
 
     private Long nextLocationId = null;
 
-    public VehicleRoutingPanel() {
-
-    }
-
     public VehicleRoutingSolution getSchedule() {
         return (VehicleRoutingSolution) solutionBusiness.getSolution();
     }

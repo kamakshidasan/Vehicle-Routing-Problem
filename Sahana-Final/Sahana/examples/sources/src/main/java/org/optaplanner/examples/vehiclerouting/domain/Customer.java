@@ -17,7 +17,6 @@
 package org.optaplanner.examples.vehiclerouting.domain;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamInclude;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.CustomShadowVariable;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
@@ -27,12 +26,13 @@ import org.optaplanner.examples.vehiclerouting.domain.solver.VehicleUpdatingVari
 import org.optaplanner.examples.vehiclerouting.domain.solver.VrpCustomerDifficultyComparator;
 
 @PlanningEntity(difficultyComparatorClass = VrpCustomerDifficultyComparator.class)
-@XStreamAlias("VrpCustomer")
+@XStreamAlias("customer")
 
 public class Customer extends AbstractPersistable implements Standstill {
 
     protected Location location;
-    protected int demand;
+    protected Item item;
+    protected int quantity;
 
     // Planning variables: changes during planning, between score calculations.
     protected Standstill previousStandstill;
@@ -49,12 +49,28 @@ public class Customer extends AbstractPersistable implements Standstill {
         this.location = location;
     }
 
-    public int getDemand() {
-        return demand;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDemand(int demand) {
-        this.demand = demand;
+    public Item getItem(){
+        return item;
+    }
+
+    public double getCustomerItemWeight(){
+        return getItem().getItemWeight();
+    }
+
+    public double getCustomerItemVolume(){
+        return getItem().getItemVolume();
+    }
+
+    public double getWeightDemand(){
+        return getCustomerItemWeight()*getQuantity();
+    }
+
+    public double getVolumeDemand(){
+        return getCustomerItemVolume()*getQuantity();
     }
 
     @PlanningVariable(valueRangeProviderRefs = {"vehicleRange", "customerRange"},
@@ -85,13 +101,6 @@ public class Customer extends AbstractPersistable implements Standstill {
         this.vehicle = vehicle;
     }
 
-    // ************************************************************************
-    // Complex methods
-    // ************************************************************************
-
-    /**
-     * @return a positive number, the distance multiplied by 1000 to avoid floating point arithmetic rounding errors
-     */
     public int getDistanceToPreviousStandstill() {
         if (previousStandstill == null) {
             return 0;
@@ -99,13 +108,10 @@ public class Customer extends AbstractPersistable implements Standstill {
         return getDistanceTo(previousStandstill);
     }
 
-    /**
-     * @param standstill never null
-     * @return a positive number, the distance multiplied by 1000 to avoid floating point arithmetic rounding errors
-     */
     public int getDistanceTo(Standstill standstill) {
         return location.getDistance(standstill.getLocation());
     }
+
 
     @Override
     public String toString() {

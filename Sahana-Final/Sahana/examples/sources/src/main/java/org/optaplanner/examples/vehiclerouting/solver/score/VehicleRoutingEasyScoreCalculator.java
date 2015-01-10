@@ -32,9 +32,13 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
     public HardSoftScore calculateScore(VehicleRoutingSolution schedule) {
         List<Customer> customerList = schedule.getCustomerList();
         List<Vehicle> vehicleList = schedule.getVehicleList();
-        Map<Vehicle, Integer> vehicleDemandMap = new HashMap<Vehicle, Integer>(vehicleList.size());
+        Map<Vehicle, Double> vehicleWeightMap = new HashMap<Vehicle, Double>(vehicleList.size());
+        Map<Vehicle, Double> vehicleVolumeMap = new HashMap<Vehicle, Double>(vehicleList.size());
         for (Vehicle vehicle : vehicleList) {
-            vehicleDemandMap.put(vehicle, 0);
+            vehicleWeightMap.put(vehicle, 0.0);
+        }
+        for (Vehicle vehicle : vehicleList) {
+            vehicleVolumeMap.put(vehicle, 0.0);
         }
         int hardScore = 0;
         int softScore = 0;
@@ -42,24 +46,25 @@ public class VehicleRoutingEasyScoreCalculator implements EasyScoreCalculator<Ve
             Standstill previousStandstill = customer.getPreviousStandstill();
             if (previousStandstill != null) {
                 Vehicle vehicle = customer.getVehicle();
-                vehicleDemandMap.put(vehicle, vehicleDemandMap.get(vehicle) + customer.getDemand());
-                // Score constraint distanceToPreviousStandstill
+                vehicleWeightMap.put(vehicle, vehicleWeightMap.get(vehicle) + customer.getWeightDemand());
+                vehicleVolumeMap.put(vehicle, vehicleVolumeMap.get(vehicle) + customer.getVolumeDemand());
                 softScore -= customer.getDistanceToPreviousStandstill();
                 if (customer.getNextCustomer() == null) {
-                    // Score constraint distanceFromLastCustomerToDepot
                     softScore -= vehicle.getLocation().getDistance(customer.getLocation());
                 }
             }
         }
-        for (Map.Entry<Vehicle, Integer> entry : vehicleDemandMap.entrySet()) {
-            int capacity = entry.getKey().getCapacity();
-            int demand = entry.getValue();
-            if (demand > capacity) {
-                // Score constraint vehicleCapacity
-                hardScore -= (demand - capacity);
+        for (Map.Entry<Vehicle, Double> entry : vehicleWeightMap.entrySet()) {
+            Vehicle vehicle = entry.getKey();
+            double weightCapacity = vehicle.getWeightCapacity();
+            double weightDemand = entry.getValue();
+            double volumeCapacity = vehicle.getVolumeCapacity();
+            double volumeDemand = vehicleVolumeMap.get(vehicle);
+            if (weightDemand > weightCapacity && volumeDemand > volumeCapacity) {
+                hardScore -= (weightDemand - weightCapacity);
             }
+
         }
-        // Score constraint arrivalAfterDueTimeAtDepot is a build-in hard constraint in VehicleRoutingImporter
         return HardSoftScore.valueOf(hardScore, softScore);
     }
 

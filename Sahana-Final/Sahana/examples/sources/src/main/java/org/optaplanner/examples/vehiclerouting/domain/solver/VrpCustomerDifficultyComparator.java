@@ -29,7 +29,7 @@ public class VrpCustomerDifficultyComparator implements Comparator<Customer>, Se
                 // TODO experiment with (aLatitude - bLatitude) % 10
                 .append(a.getLocation().getLatitude(), b.getLocation().getLatitude())
                 .append(a.getLocation().getLongitude(), b.getLocation().getLongitude())
-                .append(a.getDemand(), b.getDemand())
+                .append(a.getWeightDemand(), b.getWeightDemand())
                 .append(a.getId(), b.getId())
                 .toComparison();
     }
