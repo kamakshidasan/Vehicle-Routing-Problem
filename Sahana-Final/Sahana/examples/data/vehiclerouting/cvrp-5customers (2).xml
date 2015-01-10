@@ -1,0 +1,124 @@
+<VehicleRouting id="1">
+  <id>0</id>
+  <name>A-n33-k6</name>
+
+
+  <locationList id="2">
+    <location id="3">
+      <id>1</id>
+      <latitude>34.0</latitude>
+      <longitude>31.0</longitude>
+    </location>
+    <location id="4">
+      <id>2</id>
+      <latitude>45.0</latitude>
+      <longitude>55.0</longitude>
+    </location>
+    <location id="5">
+      <id>3</id>
+      <latitude>70.0</latitude>
+      <longitude>80.0</longitude>
+    </location>
+    <location id="6">
+      <id>4</id>
+      <latitude>81.0</latitude>
+      <longitude>70.0</longitude>
+    </location>
+    <location id="7">
+      <id>5</id>
+      <latitude>85.0</latitude>
+      <longitude>61.0</longitude>
+    </location>
+  </locationList>
+
+
+  <depotList id="8">
+    <depot id="9">
+      <id>1</id>
+      <location reference="3"/>
+    </depot>
+  </depotList>
+
+
+  <vehicleList id="10">
+    <vehicle id="11">
+      <id>1</id>
+      <weightCapacity>200</weightCapacity>
+      <volumeCapacity>100</volumeCapacity>
+      <depot reference="9"/>
+    </vehicle>
+    <vehicle id="12">
+      <id>2</id>
+      <weightCapacity>300</weightCapacity>
+      <volumeCapacity>150</volumeCapacity>
+      <depot reference="9"/>
+    </vehicle>
+  </vehicleList>
+
+
+  <itemList id="13">
+    <item id="14">
+      <id>1</id>
+      <name>apple</name>
+      <itemWeight>1</itemWeight>
+      <itemVolume>0.7</itemVolume>
+    </item>
+    <item id="15">
+      <id>2</id>
+      <name>orange</name>
+      <itemWeight>2</itemWeight>
+      <itemVolume>0.5</itemVolume>
+    </item>
+  </itemList>
+
+  <customerList id="16">
+    <customer id="17">
+      <id>1</id>
+      <location reference="4"/>
+      <item reference="14"/>
+      <quantity>20</quantity>
+    </customer>
+    <customer id="18">
+      <id>2</id>
+      <location reference="4"/>
+      <item reference="15"/>
+      <quantity>30</quantity>
+    </customer>
+    <customer id="19">
+      <id>3</id>
+      <location reference="5"/>
+      <item reference="14"/>
+      <quantity>50</quantity>
+    </customer>
+    <customer id="20">
+      <id>4</id>
+      <location reference="5"/>
+      <item reference="15"/>
+      <quantity>40</quantity>
+    </customer>
+    <customer id="21">
+      <id>5</id>
+      <location reference="6"/>
+      <item reference="14"/>
+      <quantity>35</quantity>
+    </customer>
+    <customer id="22">
+      <id>6</id>
+      <location reference="6"/>
+      <item reference="15"/>
+      <quantity>25</quantity>
+    </customer>
+    <customer id="23">
+      <id>7</id>
+      <location reference="7"/>
+      <item reference="14"/>
+      <quantity>40</quantity>
+    </customer>
+    <customer id="24">
+      <id>8</id>
+      <location reference="7"/>
+      <item reference="15"/>
+      <quantity>50</quantity>
+    </customer>
+  </customerList>
+</VehicleRouting>

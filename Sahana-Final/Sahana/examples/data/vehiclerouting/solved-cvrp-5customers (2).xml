@@ -1,0 +1,140 @@
+<VehicleRouting id="1">
+  <id>0</id>
+  <name>A-n33-k6</name>
+  <itemList id="2">
+    <item id="3">
+      <id>1</id>
+      <name>apple</name>
+      <itemWeight>1.0</itemWeight>
+      <itemVolume>0.7</itemVolume>
+    </item>
+    <item id="4">
+      <id>2</id>
+      <name>orange</name>
+      <itemWeight>2.0</itemWeight>
+      <itemVolume>0.5</itemVolume>
+    </item>
+  </itemList>
+  <locationList id="5">
+    <location id="6">
+      <id>1</id>
+      <latitude>34.0</latitude>
+      <longitude>31.0</longitude>
+    </location>
+    <location id="7">
+      <id>2</id>
+      <latitude>45.0</latitude>
+      <longitude>55.0</longitude>
+    </location>
+    <location id="8">
+      <id>3</id>
+      <latitude>70.0</latitude>
+      <longitude>80.0</longitude>
+    </location>
+    <location id="9">
+      <id>4</id>
+      <latitude>81.0</latitude>
+      <longitude>70.0</longitude>
+    </location>
+    <location id="10">
+      <id>5</id>
+      <latitude>85.0</latitude>
+      <longitude>61.0</longitude>
+    </location>
+  </locationList>
+  <depotList id="11">
+    <depot id="12">
+      <id>1</id>
+      <location reference="6"/>
+    </depot>
+  </depotList>
+  <vehicleList id="13">
+    <vehicle id="14">
+      <id>1</id>
+      <depot reference="12"/>
+      <weightCapacity>200.0</weightCapacity>
+      <volumeCapacity>100.0</volumeCapacity>
+      <nextCustomer id="15">
+        <id>2</id>
+        <location reference="7"/>
+        <item reference="4"/>
+        <quantity>30</quantity>
+        <previousStandstill class="vehicle" reference="14"/>
+        <nextCustomer id="16">
+          <id>1</id>
+          <location reference="7"/>
+          <item reference="3"/>
+          <quantity>20</quantity>
+          <previousStandstill class="customer" reference="15"/>
+          <vehicle reference="14"/>
+        </nextCustomer>
+        <vehicle reference="14"/>
+      </nextCustomer>
+    </vehicle>
+    <vehicle id="17">
+      <id>2</id>
+      <depot reference="12"/>
+      <weightCapacity>300.0</weightCapacity>
+      <volumeCapacity>150.0</volumeCapacity>
+      <nextCustomer id="18">
+        <id>3</id>
+        <location reference="8"/>
+        <item reference="3"/>
+        <quantity>50</quantity>
+        <previousStandstill class="vehicle" reference="17"/>
+        <nextCustomer id="19">
+          <id>4</id>
+          <location reference="8"/>
+          <item reference="4"/>
+          <quantity>40</quantity>
+          <previousStandstill class="customer" reference="18"/>
+          <nextCustomer id="20">
+            <id>5</id>
+            <location reference="9"/>
+            <item reference="3"/>
+            <quantity>35</quantity>
+            <previousStandstill class="customer" reference="19"/>
+            <nextCustomer id="21">
+              <id>6</id>
+              <location reference="9"/>
+              <item reference="4"/>
+              <quantity>25</quantity>
+              <previousStandstill class="customer" reference="20"/>
+              <nextCustomer id="22">
+                <id>7</id>
+                <location reference="10"/>
+                <item reference="3"/>
+                <quantity>40</quantity>
+                <previousStandstill class="customer" reference="21"/>
+                <nextCustomer id="23">
+                  <id>8</id>
+                  <location reference="10"/>
+                  <item reference="4"/>
+                  <quantity>50</quantity>
+                  <previousStandstill class="customer" reference="22"/>
+                  <vehicle reference="17"/>
+                </nextCustomer>
+                <vehicle reference="17"/>
+              </nextCustomer>
+              <vehicle reference="17"/>
+            </nextCustomer>
+            <vehicle reference="17"/>
+          </nextCustomer>
+          <vehicle reference="17"/>
+        </nextCustomer>
+        <vehicle reference="17"/>
+      </nextCustomer>
+    </vehicle>
+  </vehicleList>
+  <customerList id="24">
+    <customer reference="16"/>
+    <customer reference="15"/>
+    <customer reference="18"/>
+    <customer reference="19"/>
+    <customer reference="20"/>
+    <customer reference="21"/>
+    <customer reference="22"/>
+    <customer reference="23"/>
+  </customerList>
+  <score id="25">0hard/-197489soft</score>
+</VehicleRouting>
